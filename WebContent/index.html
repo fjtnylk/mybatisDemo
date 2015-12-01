@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html style="height: 100%" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>易销自有接口测试</title>
+    <link rel="stylesheet" type="text/css" href="css/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="css/icon.css"/>
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <script type="text/javascript" src="js/jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+    <style type="text/css">
+        ul{
+            margin:0;
+            padding:0;
+        }
+        ul li{
+            margin-left: 5px;
+            border-bottom:1px #ededed solid;
+            list-style-type:none;
+        }
+        ul li a{
+            color:#000000; display:block;padding:5px 0 5px 5px;
+            text-decoration : none;
+        }
+        ul li a:hover{
+            background-color:#ededed;
+        }
+    </style>
+
+<script type="text/javascript">
+    function addPanel(title,url){
+        var flag =$('#div_tab').tabs('exists',title);
+        if(flag){
+            $('#div_tab').tabs('select',title);
+        } else{
+            $('#div_tab').tabs('add',{
+                title: title,
+                content:'<div style="padding: 0px; height: 100%"><IFRAME src="'+url+'" frameBorder=0 style="width:100%;height:100%;"></IFRAME></div>',
+                closable: true
+            });
+        }
+    }
+
+    function removePanel(){
+        var tab = $('#div_tab').tabs('getSelected');
+        if (tab){
+            var index = $('#div_tab').tabs('getTabIndex', tab);
+            $('#div_tab').tabs('close', index);
+        }
+    }
+
+
+</script>
+</head>
+<body style="height: 100%">
+<div style="width: 100%;height: 100%">
+<div class="easyui-layout" style="width:100%;height:99%;">
+    <!-- 上部区域  -->
+    <div data-options="region:'north'" style="height:40px;border: 0px;">
+        <div style="width: 200px;height:100%;text-align:center;line-height:40px; FONT-SIZE:23PX;font-family:KaiTi;background-color: #b7d2ff;float: left" >上海易销自有接口</div>
+        <div style="height:100%;background-color: #b7d2ff;margin-left: 200px;overflow:hidden;" >
+            <div class="easyui-panel" style="padding:5px;height: 40px;border:0px;background-color: #b7d2ff;"
+                    dataoptions="">
+                <a href="#" class="easyui-menubutton" data-options="menu:'#mm1'">联通业务</a>
+                <a href="#" class="easyui-menubutton" data-options="menu:'#mm2'">移动业务</a>
+                <a href="#" class="easyui-menubutton" data-options="menu:'#mm3'">电信业务</a>
+                <a href="#" class="easyui-menubutton" data-options="menu:'#mm8'">服务支持</a>
+                <a href="#" class="easyui-menubutton" data-options="menu:'#mm9'">日志查看</a>
+            </div>
+            <div id="mm1" >
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('CBSS','app/mobiler/chinaunicom/cbss.html')">CBSS</a></div>
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('ESS','app/mobiler/chinaunicom/ess.html')">ESS</a></div>
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('BSS','app/mobiler/chinaunicom/bss.html')">BSS</a></div>
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('WOEGO','app/mobiler/chinaunicom/woego.html')">woego</a></div>
+            </div>
+            <div id="mm2" style="width:100px;">
+                <div>Help</div>
+                <div>Update</div>
+                <div>About</div>
+            </div>
+            <div id="mm3" class="menu-content" style="background:#f0f0f0;padding:10px;text-align:left">
+<!--                 <img src="http://www.jeasyui.com/images/logo1.png" style="width:150px;height:50px"> -->
+<!--                 <p style="font-size:14px;color:#444;">Try jQuery EasyUI to build your modern, interactive, javascript applications.</p> -->
+            <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('TELE','app/mobiler/chinatelecom/tele.html')">TELE</a></div>
+            </div>
+            <div id="mm8" >
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('服务支持','app/support/support.htm')">服务支持</a></div>
+            </div>
+            <div id="mm9" >
+                <div><a href="javascript:void(0)" class="easyui-linkbutton" data-options="plain:true" onclick="addPanel('logdown','app/logdown/logdown.html')">日志查看</a></div>
+            </div>
+        </div>
+    </div>
+   
+    <!-- 中间部分 -->
+    <div data-options="region:'center'">
+        <!-- tab 格式-->
+        <div  id="div_tab" class="easyui-tabs" data-options="fit:true,border:false,plain:true">
+            <!-- 第一个tab 格式 使用嵌入页面 -->
+            <div title="首页" style="padding:5px"><IFRAME src="" frameBorder=0 style="width:100%;height:100%;"></IFRAME></div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+</body>
+
+</html>
